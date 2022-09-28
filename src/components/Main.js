@@ -1,16 +1,21 @@
 import Home from "./Main/Home";
 import Shop from "./Main/Shop";
 import { Routes, Route } from 'react-router-dom';
+import styled from "styled-components";
 
 const Main = () => {
     return (
-        <div>
+        <MainWrapper>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/shop' element={<Shop />} />
             </Routes>
-        </div>
+        </MainWrapper>
     );
 }
+
+const MainWrapper = styled.div`
+    padding: 3rem;
+`;
 
 export default Main;

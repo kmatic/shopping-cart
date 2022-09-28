@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
     :root {
         --dark: #363740;
         --light: #DADCE1;
+        --val-red: #fa4454;
     }
 
     *,
@@ -23,6 +24,7 @@ const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         background-color: var(--light);
+        text-align: center;
     }
       
     code {
