@@ -27,7 +27,7 @@ const NavWrapper = styled.nav`
     justify-content: space-around;
     align-items: center;
     background: var(--dark);
-    padding: 3rem;
+    padding: 1.4rem;
 
     > ul {
         display: flex; 

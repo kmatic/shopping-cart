@@ -36,8 +36,30 @@ const Main = () => {
                 return [...cart, {...newItem, quantity: 1}];
             });
         }
+    }
 
-        // console.log(cart);
+    const onIncrease = (uuid) => {
+        const updatedQuantity = cart.map(item => {
+            if (item.uuid === uuid) {
+                return {...item, quantity: item.quantity + 1};
+            }
+            return item;
+        });
+
+        setCart(updatedQuantity);
+    }
+
+    const onDecrease = (uuid) => {
+        const updatedQuantity = cart.map(item => {
+            if (item.uuid === uuid) {
+                return {...item, quantity: item.quantity - 1};
+            }
+            return item;
+        });
+
+        const filteredQuantity = updatedQuantity.filter(item => item.quantity > 0); // checks for 0 quantity and removes
+
+        setCart(filteredQuantity);
     }
 
     useEffect(() => {
@@ -49,7 +71,7 @@ const Main = () => {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/shop' element={<Shop onCartAdd={onCartAdd}/>} />
-                <Route path='/cart' element={<Cart cart={cart} total={total}/>} />
+                <Route path='/cart' element={<Cart cart={cart} total={total} onIncrease={onIncrease} onDecrease={onDecrease}/>} />
             </Routes>
         </MainWrapper>
     );
