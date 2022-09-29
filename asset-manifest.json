@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/shopping-cart/static/js/main.eea07a9d.js",
+    "static/media/logo.png": "/shopping-cart/static/media/logo.308a5e12767f15ac2c41.png",
+    "index.html": "/shopping-cart/index.html",
+    "main.eea07a9d.js.map": "/shopping-cart/static/js/main.eea07a9d.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.eea07a9d.js"
+  ]
+}
