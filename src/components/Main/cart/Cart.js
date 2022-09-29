@@ -62,7 +62,7 @@ const Div = styled.div`
 `;
 
 const Button = styled.button`
-    width: 40%;
+    width: 250px;
     padding: 8px;
     font-size: 1.2rem;
     font-weight: bold;

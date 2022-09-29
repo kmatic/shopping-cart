@@ -31,6 +31,11 @@ const NavWrapper = styled.nav`
     background: var(--dark);
     padding: 1.6rem 3rem;
 
+    @media (max-width: 840px) {
+        flex-direction: column;
+        gap: 10px;
+    }
+
     > ul {
         display: flex; 
         align-items: center;
