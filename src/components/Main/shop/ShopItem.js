@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-const ShopItem = ({ bundle }) => {
+const ShopItem = ({ bundle, onCartAdd }) => {
     return (
         <Div>
             <img src={bundle.verticalPromoImage} alt={bundle.displayName} />
             <div>
                 <h3>{bundle.displayName}</h3>
-                <button>Add to cart</button>
+                <h4>${bundle.price}.00</h4>
+                <button onClick={() => onCartAdd(bundle)}>Add to cart</button>
             </div>
         </Div>
     );
@@ -22,7 +23,7 @@ const Div = styled.div`
     border: 1px solid gray;
 
     > img {
-        max-height: 4000px;
+        max-height: 400px;
         max-width: 280px;
         margin-top: -1px;
     }
@@ -31,16 +32,20 @@ const Div = styled.div`
         display: flex;
         flex-direction: column;
         width: 90%;
-        gap: 15px;
+        gap: 10px;
     }
 
     > div > button {
-        padding: 10px 25px;
+        padding: 8px;
         background: var(--dark);
         color: white;
         font-weight: bold;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-bottom: 10px;
+    }
+
+    h4 {
+        font-weight: 400;
     }
 `;
 
