@@ -4,10 +4,14 @@ import Cart from "./Main/cart/Cart";
 import { Routes, Route } from 'react-router-dom';
 import styled from "styled-components";
 import { useState, useEffect } from 'react';
+import filterDuplicates from "../utilities/filterDuplicates";
+import generatePrice from "../utilities/generatePrice";
 
 const Main = () => {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState(0);
+    const [bundles, setBundles] = useState([]);
+    const [randomBundle, setRandomBundle] = useState({});
 
     const sumTotal = () => {
         const sum = cart.reduce((previous, current) => {
@@ -62,6 +66,29 @@ const Main = () => {
         setCart(filteredQuantity);
     }
 
+    const fetchRandomBundle = async () => {
+        const response = await fetch('https://valorant-api.com/v1/bundles');
+        const info = await response.json();
+        const filtered = filterDuplicates(info.data);
+        let rand = Math.floor(Math.random() * filtered.length);
+
+        setRandomBundle(filtered[rand]);
+    }
+
+    const fetchBundles = async () => {
+        const response = await fetch('https://valorant-api.com/v1/bundles');
+        const info = await response.json();
+        const filtered = filterDuplicates(info.data);
+        const filteredWithPrice = generatePrice(filtered);
+
+        setBundles(filteredWithPrice);
+    }
+
+    useEffect(() => {
+        fetchRandomBundle();
+        fetchBundles();
+    }, []);
+
     useEffect(() => {
         sumTotal();
     });
@@ -69,8 +96,8 @@ const Main = () => {
     return (
         <MainWrapper>
             <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/shop' element={<Shop onCartAdd={onCartAdd}/>} />
+                <Route path='/' element={<Home randomBundle={randomBundle}/>} />
+                <Route path='/shop' element={<Shop onCartAdd={onCartAdd} bundles={bundles}/>} />
                 <Route path='/cart' element={<Cart cart={cart} total={total} onIncrease={onIncrease} onDecrease={onDecrease}/>} />
             </Routes>
         </MainWrapper>
@@ -78,9 +105,11 @@ const Main = () => {
 }
 
 const MainWrapper = styled.div`
-    padding: 2rem 3rem;
     display: flex;
     justify-content: center;
+    align-items: start;
+    width: 100%;
+    height: 100%;
 `;
 
 export default Main;

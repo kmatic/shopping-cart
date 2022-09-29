@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from '../images/logo.png';
 
 const Header = () => {
     return (
             <NavWrapper>
                 <StyledLink to='/'>
+                    <img src={logo} alt='logo' />
                     <h1>ValBundles</h1>
                 </StyledLink>
                 <ul>
@@ -24,10 +26,10 @@ const Header = () => {
 
 const NavWrapper = styled.nav`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     background: var(--dark);
-    padding: 1.4rem;
+    padding: 1.6rem 3rem;
 
     > ul {
         display: flex; 
@@ -45,10 +47,16 @@ const NavWrapper = styled.nav`
         font-size: 3.5rem;
         color: var(--val-red);
     }
+
+    img {
+        height: 70px;
+        width: 120px;
+    }
 `;
 
 const StyledLink = styled(Link)`
     text-decoration: none;
+    display: flex;
 `;
 
 export default Header;

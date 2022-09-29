@@ -1,26 +1,7 @@
-import { useEffect, useState } from "react";
 import ShopItem from "./ShopItem";
-import filterDuplicates from "../../../utilities/filterDuplicates";
-import generatePrice from "../../../utilities/generatePrice";
 import styled from "styled-components";
 
-const Shop = ({ onCartAdd }) => {
-    const [bundles, setBundles] = useState([]);
-
-    const fetchBundles = async () => {
-        const response = await fetch('https://valorant-api.com/v1/bundles');
-        const info = await response.json();
-        const filtered = filterDuplicates(info.data);
-        const filteredWithPrice = generatePrice(filtered);
-
-        console.log(filteredWithPrice);
-        setBundles(filteredWithPrice);
-    }
-
-    useEffect(() => {
-        fetchBundles();
-    }, []);
-
+const Shop = ({ onCartAdd, bundles }) => {
     return (
         <ShopWrapper>
             {bundles.map(bundle => (
@@ -41,6 +22,18 @@ const ShopWrapper = styled.div`
     justify-items: center;
     align-items: center;
     width: 100%;
+    padding: 2rem 3rem;
+
+    animation: fadeIn linear 1s;
+    
+    @keyframes fadeIn {
+        0% {
+        opacity: 0;
+        }
+        100% {
+        opacity: 1;
+        }
+    }
 `;
 
 export default Shop;

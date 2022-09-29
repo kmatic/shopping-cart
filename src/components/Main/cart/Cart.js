@@ -15,6 +15,7 @@ const Cart = ({ cart, total, onIncrease, onDecrease }) => {
                         item={item}
                         onIncrease={onIncrease}
                         onDecrease={onDecrease}
+                        key={item.uuid}
                     />
                 ))}
             </Div>
@@ -35,6 +36,18 @@ const CartWrapper = styled.div`
     align-items: center;
     justify-content: center;
     width: 50%;
+    padding: 2rem 3rem;
+
+    animation: fadeIn linear 1s;
+    
+    @keyframes fadeIn {
+        0% {
+        opacity: 0;
+        }
+        100% {
+        opacity: 1;
+        }
+    }
 `;
 
 const Div = styled.div`
@@ -49,7 +62,7 @@ const Div = styled.div`
 `;
 
 const Button = styled.button`
-    width: 50%;
+    width: 40%;
     padding: 8px;
     font-size: 1.2rem;
     font-weight: bold;

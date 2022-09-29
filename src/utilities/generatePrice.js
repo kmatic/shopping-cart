@@ -3,7 +3,6 @@ const generatePrice = (bundles) => {
         bundle.price = Math.floor(Math.random() * 100 + 1);
         delete bundle.assetPath;
         delete bundle.description;
-        delete bundle.displayIcon;
         delete bundle.displayIcon2;
         delete bundle.displayNameSubText;
         delete bundle.extraDescription;
