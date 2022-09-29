@@ -15,7 +15,7 @@ const Header = () => {
                         <li>Shop</li>
                     </StyledLink>
                     <StyledLink to='/cart'>
-                        <li>Cart</li>
+                        <li>Cart (0)</li>
                     </StyledLink>
                 </ul>
             </NavWrapper>

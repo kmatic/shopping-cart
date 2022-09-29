@@ -40,6 +40,7 @@ const ShopWrapper = styled.div`
     gap: 50px;
     justify-items: center;
     align-items: center;
+    width: 100%;
 `;
 
 export default Shop;

@@ -78,7 +78,9 @@ const Main = () => {
 }
 
 const MainWrapper = styled.div`
-    padding: 3rem;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: center;
 `;
 
 export default Main;
