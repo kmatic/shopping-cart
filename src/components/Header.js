@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../images/logo.png';
 
-const Header = () => {
+const Header = ({ cartTotal }) => {
     return (
             <NavWrapper>
                 <StyledLink to='/'>
@@ -17,7 +17,7 @@ const Header = () => {
                         <li>Shop</li>
                     </StyledLink>
                     <StyledLink to='/cart'>
-                        <li>Cart (0)</li>
+                        <li>Cart ({cartTotal})</li>
                     </StyledLink>
                 </ul>
             </NavWrapper>
